@@ -1,0 +1,73 @@
+[package]
+name = "solochain-template-node"
+description = "A solochain node template built with Substrate, part of Polkadot Sdk."
+version = "0.1.0"
+license = "Unlicense"
+authors.workspace = true
+homepage.workspace = true
+repository.workspace = true
+edition.workspace = true
+publish = false
+
+build = "build.rs"
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[dependencies]
+clap = { features = ["derive"], workspace = true }
+futures = { features = ["thread-pool"], workspace = true }
+serde_json = { workspace = true }
+jsonrpsee = { features = ["server"], workspace = true }
+sc-cli = { workspace = true }
+sp-core = { workspace = true }
+sc-executor = { workspace = true }
+sc-network = { workspace = true }
+sc-service = { workspace = true }
+sc-telemetry = { workspace = true }
+sc-transaction-pool = { workspace = true }
+sc-transaction-pool-api = { workspace = true }
+sc-offchain = { workspace = true }
+sc-consensus = { workspace = true }
+sc-consensus-aura = { workspace = true }
+sp-consensus-aura = { workspace = true }
+sc-consensus-grandpa = { workspace = true }
+sp-consensus-grandpa = { workspace = true }
+sp-genesis-builder = { workspace = true }
+sc-client-api = { workspace = true }
+sc-basic-authorship = { workspace = true }
+sp-runtime = { workspace = true }
+sp-io = { workspace = true }
+sp-timestamp = { workspace = true }
+sp-inherents = { workspace = true }
+sp-keyring = { workspace = true }
+sp-api = { workspace = true }
+sp-blockchain = { workspace = true }
+sp-block-builder = { workspace = true }
+frame-system = { workspace = true }
+frame-metadata-hash-extension = { workspace = true }
+pallet-transaction-payment = { workspace = true }
+pallet-transaction-payment-rpc = { workspace = true }
+substrate-frame-rpc-system = { workspace = true }
+frame-benchmarking-cli = { workspace = true }
+solochain-template-runtime = { workspace = true }
+
+[build-dependencies]
+substrate-build-script-utils = { workspace = true }
+
+[features]
+default = ["std"]
+std = ["solochain-template-runtime/std"]
+runtime-benchmarks = [
+    "frame-benchmarking-cli/runtime-benchmarks",
+    "frame-system/runtime-benchmarks",
+    "sc-service/runtime-benchmarks",
+    "solochain-template-runtime/runtime-benchmarks",
+    "sp-runtime/runtime-benchmarks",
+]
+try-runtime = [
+    "frame-system/try-runtime",
+    "pallet-transaction-payment/try-runtime",
+    "solochain-template-runtime/try-runtime",
+    "sp-runtime/try-runtime",
+]

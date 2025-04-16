@@ -1,0 +1,22 @@
+[package]
+name = "pallet-game"
+version = "4.0.0-dev"
+description = "FRAME pallet for game logic"
+edition = "2021"
+
+[lib]
+name = "pallet_game"
+path = "src/game.rs"
+
+[dependencies]
+frame-support = { workspace = true }
+frame-system = { workspace = true }
+sp-std = { workspace = true }
+
+[features]
+default = ["std"]
+std = [
+    "frame-support/std",
+    "frame-system/std",
+    "sp-std/std",
+]
